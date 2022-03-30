@@ -1,4 +1,3 @@
-from email.policy import default
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 from rest_framework.validators import UniqueTogetherValidator
@@ -56,6 +55,6 @@ class FollowSerializer(serializers.ModelSerializer):
     def validate(self, value):
         if value["user"] == value["following"]:
             raise serializers.ValidationError(
-                "Нельзя подписататься на самого себя!"
+                "Невозможно подписаться на самого себя!"
             )
         return value
